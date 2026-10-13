@@ -35,15 +35,7 @@ object MainHook : IYukiHookXposedInit {
             prefs("tiger_duolingo").getString("now_timezone", TimeZone.getDefault().id)
         val isSaveMode = prefs("tiger_duolingo").getBoolean("is_save", false)
         loadApp(name = PACKAGE_NAME_HOOKED) {
-            "java.util.TimeZone".toClass().method {
-                name = "getID"
-                superClass()
-            }.hook {
-                after {
-                    result = nowTimeZone
-//                    YLog.info("Hooked TimeZone.getID = $result")
-                }
-            }
+            TimeZoneHooks.install(nowTimeZone)
 
             if (isSaveMode == true) {
                 "com.duolingo.splash.LaunchActivity".toClass().method {

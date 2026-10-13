@@ -12,8 +12,8 @@ android {
         applicationId = "com.jakting.duolingo"
         minSdk = 29
         targetSdk = 35
-        versionCode = 202501310
-        versionName = "2.0"
+        versionCode = 20261013
+        versionName = "2.0.1"
     }
 
     buildTypes {
